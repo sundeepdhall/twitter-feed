@@ -31,11 +31,8 @@ deploy-to-cluster:
 box:
 id: alpine
 cmd: /bin/sh
-
 steps:
-
 - bash-template
-
 - kubectl:
     name: delete secret
     server: $KUBERNETES_MASTER
