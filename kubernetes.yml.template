@@ -17,11 +17,11 @@ spec:
     spec:
       containers:
       - name: twitter-feed
-        image: ${DOCKER_REPO}:${WERCKER_GIT_BRANCH}-${WERCKER_GIT_COMMIT}
+        image: ${DOCKER_REGISTRY}/${DOCKER_REPO}:${WERCKER_GIT_BRANCH}-${WERCKER_GIT_COMMIT}
         imagePullPolicy: Always
         ports:
         - name: twitter-feed
-          containerPort: ${PORT}
+          containerPort: 8080
           protocol: TCP
       imagePullSecrets:
         - name: wercker
@@ -36,7 +36,7 @@ metadata:
 spec:
   ports:
   - port: 30000
-    targetPort: ${PORT}
+    targetPort: 8080
   selector:
     app: twitter-feed
   type: ClusterIP
